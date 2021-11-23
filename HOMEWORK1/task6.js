@@ -24,6 +24,9 @@ for (let i = 0; i < data.length; i++) {
         stringType += data[i] + ' ';
     }
 }
+console.log('Value variables with number type : ' + numberType);
+console.log('Value of variables with boolean type : ' + booleanType);
+console.log('Value of variables with string type : ' + stringType);
 
 document.write('Value variables with number type : ' + numberType + '<br /\>' + '<br /\>');
 document.write('Value of variables with boolean type : ' + booleanType + '<br\/>' + '<br /\>');
