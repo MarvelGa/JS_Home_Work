@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    let cities = ["Rome", "Lviv", "Warsaw"];
+    let result = '"';
+    for (let i = 0; i < cities.length; i++) {
+        if (cities[i] === cities[cities.length - 1]) {
+            result += cities[i] + '"'
+        } else {
+            result += cities[i] + "*";
+        }
+    }
+    document.write(result);
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    let inputValue = prompt("Enter a number, please!", "");
+    while (isNaN(parseInt(inputValue))) {
+        inputValue = prompt("You entered not a number! Try again!", "");
+    }
+    let result ='';
+    if (inputValue % 2===0 && inputValue > 0){
+        result+=(`The number ${inputValue} is positive paired. `)
+    }else {
+        result+=(`The number ${inputValue} is not positive paired. `)
+    }
+    if (inputValue % 7===0){
+        result+=(`The number ${inputValue} is multiple of 7. `)
+    }else {
+        result+=(`The number ${inputValue} is not multiple of 7. `)
+    }
+    document.write(result);
+    console.log(result);
+</script>
+</body>
+</html>

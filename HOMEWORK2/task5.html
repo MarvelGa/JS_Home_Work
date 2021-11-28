@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task05</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    let isAdult;
+    do {
+        isAdult = prompt('Are you more than 18 years old?', '');
+    } while (isAdult == null || isAdult === '')
+
+    if (isAdult === 'yes') {
+        document.write('You is adult!')
+    } else {
+        document.write('You is not adult!')
+    }
+</script>
+</body>
+</html>
