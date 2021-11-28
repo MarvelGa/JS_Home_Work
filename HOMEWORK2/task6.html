@@ -21,6 +21,9 @@
             sideC = prompt('Incorrect data! Try again! Enter sideC of triangle!', '');
         }
     }
+    sideA = parseInt(sideA);
+    sideB = parseInt(sideB);
+    sideC = parseInt(sideC);
     let result;
     let p = (sideA + sideB + sideC) / 2;
     let square = Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
@@ -31,7 +34,7 @@
 
     if (cosAlfa === 0 || cosBeta === 0 || cosGamma === 0) {
         result += 'This triangle is a right triangle.'
-    }else{
+    } else {
         result += 'This triangle is not a right triangle.'
     }
     document.write(result);

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task7</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <script>
@@ -16,6 +17,23 @@
         document.write("Good evening!");
     } else {
         document.write("Good night!");
+    }
+
+    switch (true) {
+        case(timeNumber >= 5 && timeNumber < 11):
+            document.write(" Good morning!");
+            break;
+        case (timeNumber >= 11 && timeNumber < 17):
+            document.write(" Good day!");
+            break;
+        case (timeNumber >= 17 && timeNumber < 23):
+            document.write(" Good evening!");
+            break;
+        case (timeNumber >= 23 && timeNumber <= 24 || timeNumber >= 0 && timeNumber < 5):
+            document.write(" Good night!");
+            break;
+        default:
+            document.write(" Something went wrong!");
     }
 </script>
 </body>
