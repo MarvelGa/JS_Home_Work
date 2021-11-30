@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+
+    function lastElem(arr, k) {
+        if (k === undefined) {
+            k = 1;
+        }
+        if (k > arr.length) {
+            k = arr.length;
+        }
+        let result = [];
+        let index = 0;
+        while (k > 0) {
+            for (let i = arr.length - 1; k > 0; k--, i--, index++) {
+                result[index] = arr[i];
+            }
+        }
+        return result.reverse();
+    }
+
+    console.log(lastElem([3, 4, 10, -5]));  // -5
+    console.log(lastElem([3, 4, 10, -5], 2)); // [10, -5]
+    console.log(lastElem([3, 4, 10, -5], 8)); // [3, 4, 10, -5]
+
+
+    lastElem([3, 4, 10, -5]).forEach(element => document.write(element + ' '));
+    document.write('<br>');
+    lastElem([3, 4, 10, -5], 2).forEach(element => document.write(element + ' '));
+    document.write('<br>');
+    lastElem([3, 4, 10, -5], 8).forEach(element => document.write(element + ' '));
+</script>
+</body>
+</html>

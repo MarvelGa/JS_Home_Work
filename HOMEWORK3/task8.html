@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task8</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    function getFirstLetterToUpperCase(str) {
+        let result = '';
+        for (let a in str) {
+            if (parseInt(a) === 0) {
+                result += str[a].toUpperCase();
+            } else {
+                result += str[a];
+            }
+        }
+        document.write(result);
+    }
+
+    getFirstLetterToUpperCase('i love java script');
+</script>
+</body>
+</html>

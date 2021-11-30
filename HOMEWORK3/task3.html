@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    function randArray(k) {
+        let arr = [];
+        let maxValue = 1500;
+        let minValue = 1;
+
+        for (let i = 0; i < k; i++) {
+            arr[i] = Math.trunc((Math.random() * (maxValue - minValue) + minValue));
+        }
+        return arr.forEach(element => document.write(element + ' '));
+    }
+
+    randArray(5);
+</script>
+</body>
+</html>

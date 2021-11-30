@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    function raiseToDegree() {
+        let number = prompt('Enter a Number!', '');
+        let degree = prompt('Enter a Degree!', '');
+        while (number === '' || isNaN(parseInt(number)) || degree === '' || isNaN(parseInt(degree))) {
+            if (number === '' || isNaN(parseInt(number))) {
+                number = prompt('You Number in incorrect! Try again! Enter a Number!', '');
+            }
+            if (degree === '' || isNaN(parseInt(degree))) {
+                number = prompt('You Degree in incorrect! Try again! Enter a Degree!', '');
+            }
+        }
+        number = parseInt(number);
+        degree = parseInt(degree);
+        result = number ** degree;
+        document.write(result);
+    }
+
+    raiseToDegree();
+</script>
+</body>
+</html>

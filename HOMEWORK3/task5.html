@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    function findMin() {
+        let min = arguments[0];
+        for (let i = 1; i < arguments.length; i++) {
+            if (arguments[i] < min) {
+                min = arguments[i];
+            }
+        }
+        return document.write(`Minimal element is ${min}`);
+    }
+
+    findMin(12, 14, 4, -4, 0.2);
+</script>
+</body>
+</html>
