@@ -8,12 +8,25 @@
 <body>
 <script>
     function getFirstLetterToUpperCase(str) {
+        let skipper = -1;
         let result = '';
-        for (let a in str) {
-            if (parseInt(a) === 0) {
-                result += str[a].toUpperCase();
+        for (let i = 0; i < str.length; i++) {
+            if (i === skipper) {
+                continue;
+            }
+            if (i === 0) {
+                result += str[i].toUpperCase();
             } else {
-                result += str[a];
+                switch (str[i]) {
+                    case " ":
+                        result += " ";
+                        result += str[i + 1].toUpperCase();
+                        skipper = i + 1;
+                        break;
+                    default:
+                        result += str[i];
+                        break;
+                }
             }
         }
         document.write(result);
