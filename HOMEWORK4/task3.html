@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+
+    class MonthException extends Error {
+
+        constructor(message) {
+            super(message);
+            this.name = "MonthException";
+        }
+    }
+
+    function showMonthName(month) {
+        let result;
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        if (month !== "") {
+            if (Number.isNaN(parseInt(month))) {
+                throw new Error("It is not a number!")
+            }
+            month = parseInt(month);
+            if (!(month > 0 && month <= 12)) {
+                throw new MonthException(` ${MonthException.name} - Incorrect month number! You've entered ${month}, but it should be between 1 and 12`);
+            } else {
+                for (let x in monthNames) {
+                    if (parseInt(x) === (month - 1)) {
+                        result = monthNames[x];
+                    }
+                }
+            }
+            return result;
+        } else {
+            throw new Error("The field is empty! Please enter your a month number!")
+        }
+    }
+
+    try {
+        document.write(showMonthName(5));
+        // console.log(showMonthName(15));
+        // console.log(showMonthName(5));
+    } catch (err) {
+        document.write(`Error: ${err.message}`)
+    }
+
+</script>
+</body>
+</html>

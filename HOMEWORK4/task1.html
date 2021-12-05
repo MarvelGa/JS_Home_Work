@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    let square;
+
+    function calcRectangleArea(number, degree) {
+        square = number * degree;
+        if (isNaN(square)) {
+            throw new Error("It is not a number!")
+        }
+    }
+
+    try {
+        calcRectangleArea("jhkj", 8);
+        document.write(square);
+    } catch (error) {
+        document.write(`Error: ${error.message}`)
+    }
+
+</script>
+</body>
+</html>

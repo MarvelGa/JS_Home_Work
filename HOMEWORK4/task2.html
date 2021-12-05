@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+
+    function checkAge() {
+        let age = prompt('Enter a age!', '');
+        if (age !== "") {
+            if (Number.isNaN(parseInt(age))) {
+                throw new Error("It is not a number!")
+            }
+            if (age < 14) {
+                throw new Error("You age should be more than 14 year old!")
+            }
+            return document.write(`You age is ${age}, you can watch this film!`)
+        } else {
+            throw new Error("The field is empty! Please enter your age!")
+        }
+    }
+
+    try {
+        checkAge();
+    } catch (error) {
+        document.write(`Error: ${error.message}`)
+    }
+
+</script>
+</body>
+</html>

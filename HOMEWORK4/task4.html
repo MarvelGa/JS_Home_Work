@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    let userData;
+
+    function showUser(id) {
+        if (id < 0 && id !== undefined) {
+            throw new Error(`ID must not be negative: ${id}`)
+        } else {
+            userData = {
+                id: id
+            }
+            return userData;
+        }
+    }
+
+    function showUsers(ids) {
+        let index = 0;
+        let mas = [];
+        for (let x in ids) {
+            mas[index] = showUser(ids[x]);
+            index++;
+        }
+        return mas;
+    }
+
+    let masData
+    let data = [7, -12, 44, 22];
+    try {
+        masData = showUsers(data);
+        str = JSON.stringify(masData);
+        document.write(`Result: ${str}`)
+    } catch (error) {
+        document.write(`Error: ${error.message}`)
+    } finally {
+        let index = 0;
+        let newMass = [];
+        for (let x in data) {
+            if (data[x] > 0) {
+                newMass[index++] = data[x];
+            }
+        }
+        document.write("<br>")
+        str = JSON.stringify(showUsers(newMass));
+        document.write(`Result: ${str}`)
+    }
+
+</script>
+</body>
+</html>
