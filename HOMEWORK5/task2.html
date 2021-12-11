@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<script>
+    function showProps(obj) {
+        let keyOfObject = Object.keys(obj).map(el => [(el)]);
+        let valueOfObject = Object.values(obj).map(el => [el]);
+        let allData = Object.keys(obj).map((key) => [(key), obj[key]]);
+
+        console.log(keyOfObject);
+        console.log(valueOfObject);
+        console.log(allData);
+    }
+
+    let person = new Object();
+    person.cityName = 'Kyiv';
+    person.age = 30;
+    person.nationality = 'Ukraine';
+    person.hairColor = 'black';
+    person.eysColor = 'blue';
+
+    showProps(person);
+</script>
+</body>
+</html>

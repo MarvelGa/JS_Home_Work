@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+<script>
+    class Person {
+        constructor(name, surname) {
+            this.name = name;
+            this.surname = surname;
+        }
+
+        showFullName() {
+            return this.name + ' ' + this.surname;
+        }
+    }
+
+    class Student extends Person {
+        constructor(name, surname, year) {
+            super(name, surname);
+            this.year = year;
+        }
+
+        showFullName(middleName) {
+            this.middleName = middleName;
+            return this.name + ' ' + this.surname + ' ' + this.middleName;
+        }
+
+        showCourse() {
+            let currentYear = new Date().getFullYear();
+            return currentYear - this.year;
+        }
+    }
+
+    const stud1 = new Student("Petro", "Petrenko", 2015);
+    console.log(stud1.showFullName("Petrovych")); // Petrenko Petro Petrovych
+    console.log("Current course: " + stud1.showCourse()); //Current course: 6
+
+</script>
+</body>
+</html>
