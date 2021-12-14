@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<script>
+    let data = document.querySelectorAll("ul > li");
+    let result= data[0].innerText + ", " + data[data.length-1].innerText + ", " + data[1].innerText+ ", " + data[3].innerText+ ", " + data[2].innerText;
+    console.log(result);
+
+    const list = document.body.firstElementChild;
+    console.log(list.firstElementChild.textContent);
+    console.log(list.lastElementChild.textContent);
+    console.log(list.firstElementChild.nextElementSibling.textContent);
+    console.log(list.lastElementChild.previousElementSibling.textContent);
+    console.log(list.lastElementChild.previousElementSibling.previousElementSibling.textContent);
+</script>
+
+</body>
+</html>

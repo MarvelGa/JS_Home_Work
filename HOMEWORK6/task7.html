@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<body>
+<script>
+    let elementMain = document.createElement('main');
+    elementMain.className = "mainClass check item";
+    document.body.appendChild(elementMain);
+    let newDiv = document.createElement("div");
+    newDiv.setAttribute('id', 'myDiv')
+    newDiv.innerHTML = " <p>First paragraph</p>";
+    document.querySelector('main').appendChild(newDiv);
+</script>
+</body>
+</html>

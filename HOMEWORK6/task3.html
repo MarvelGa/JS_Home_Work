@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<h2>Article header</h2>
+<div id="text">
+    <p>First paragraph</p>
+    <p>Second paragraph</p>
+    <p>Third paragraph</p>
+</div>
+<p>Another text</p>
+<script>
+       let data = document.querySelectorAll("div > p");
+       for (let a = 0; a < data.length; a++) {
+           console.log(`Selector text ${a}:  ${data[a].innerText}`);
+       }
+</script>
+</body>
+</html>
