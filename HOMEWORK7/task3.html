@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body style=" background: yellow">
+<table>
+    <tr>
+        <td>
+            <button onclick="changeBgColor('blue');"> Click to make the page blue."</button>
+        </td>
+        <td>
+            <button ondblclick="changeBgColor('pink');"> Double-click to make the page pink."</button>
+        </td>
+        <td>
+            <button onmousedown="changeBgColor('brown');"
+                    onmouseup="changeBgColor('white');"> Click and hold to make the page brown."
+            </button>
+        </td>
+        <td>
+            <a onmouseover="changeBgColor('yellow');" onmouseout="changeBgColor('white');"
+               href="https://www.w3schools.com">Hover over to make page yellow.</a>
+        </td>
+    </tr>
+</table>
+<script>
+    function changeBgColor(color) {
+        document.body.style.background = color;
+    }
+</script>
+</body>
+</html>

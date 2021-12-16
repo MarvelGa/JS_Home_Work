@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+
+<script>
+    let myWindow = window.open("some.html", "w3schools", "width=300, height=300");
+
+    setTimeout(resizeWin, 2000);
+    setTimeout(move_now, 4000);
+    setTimeout(close_now, 6000);
+
+    function resizeWin() {
+        myWindow.resizeTo(500, 500);
+    }
+
+    function move_now() {
+        myWindow.moveTo(200, 200);
+    }
+
+    function close_now() {
+        myWindow.close();
+    }
+</script>
+</body>
+</html>

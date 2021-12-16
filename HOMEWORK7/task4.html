@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+</head>
+<body>
+<form name="usersForm">
+    <table>
+        <tr>
+            <td>
+                <label>
+                    <select name="users" size="5">
+                        <option value="Peter" selected="selected">Peter</option>
+                        <option value="John">John</option>
+                        <option value="Aloise">Aloise</option>
+                        <option value="Alex">Alex</option>
+                        <option value="Iren">Iren</option>
+                    </select>
+                </label>
+
+            </td>
+            <td>
+                <button type="button" name="removeButton">Choose and Delete</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+<script>
+
+    removeButton = usersForm.removeButton;
+    nameSelect = usersForm.users;
+
+    function removeOption() {
+        let selectedIndex = nameSelect.options.selectedIndex;
+        nameSelect.options[selectedIndex] = null;
+    }
+
+    removeButton.addEventListener("click", removeOption);
+</script>
+</body>
+</html>

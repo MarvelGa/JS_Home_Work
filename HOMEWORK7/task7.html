@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<body>
+<select name="country" id="country">
+    <option value="ger">Germany</option>
+    <option value="usa">USA</option>
+    <option value="ukr">Ukraine</option>
+</select>
+
+<select name="cities" id="cities"></select>
+<p></p>
+
+<script>
+    let countriesSelect = document.querySelector('#country');
+    let citiesSelect = document.querySelector('#cities');
+
+    let data = {
+        ger: ['Berlin', 'Kiln', 'Hanover'],
+        usa: ['LA', 'NY', 'Washington'],
+        ukr: ['Kiev', 'Lvov', 'Kharkov']
+    }
+    let pElem = '';
+    let selectedCountryValue = '';
+    let selectedCountryText = '';
+    countriesSelect.addEventListener('change', function () {
+        pElem = document.querySelector('p');
+        pElem.innerText = '';
+        selectedCountryValue = this.value;
+
+        for (let i in countriesSelect) {
+            let option = countriesSelect.options[i];
+            if (option.value === selectedCountryValue) {
+                selectedCountryText = option.text;
+                break;
+            }
+        }
+
+        let cities = data[this.value];
+        citiesSelect.length = 0;
+
+        for (let i in cities) {
+            citiesSelect.add(new Option(cities[i]));
+        }
+    });
+
+    citiesSelect.addEventListener('change', function () {
+        let selectedCityValue = this.value;
+        pElem = document.querySelector('p');
+        pElem.innerText = '';
+        let tElem = document.createTextNode(selectedCountryText + ', ' + selectedCityValue);
+        pElem.appendChild(tElem);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+
+<div>
+    <button type="button" onclick="printText('I was pressed!')" ; onmouseover="printText('Mouse on me!')" ;
+            onmouseout="printText('Mouse is not on me!')">Live button!
+    </button>
+</div>
+
+<script>
+    let elementList = document.createElement('UL');
+    document.body.appendChild(elementList);
+
+    function printText(text) {
+        let pElem = document.createElement("LI");
+        let tElem = document.createTextNode(text);
+        pElem.appendChild(tElem);
+        document.querySelector('UL').appendChild(pElem);
+    }
+</script>
+</body>
+</html>
