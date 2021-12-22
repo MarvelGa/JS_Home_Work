@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+<script>
+    function isValid(str) {
+        let regex = /^([\d]{4}-){3}[\d]{4}$/;
+        return regex.test(str);
+    }
+
+    let str = "9999-9999-9999-9999";
+    document.write(isValid(str).toString());
+</script>
+</body>
+</html>

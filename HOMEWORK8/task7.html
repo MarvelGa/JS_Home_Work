@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task7</title>
+</head>
+<body>
+<script>
+    function isValidLogin(str) {
+        let digitsResult = '';
+        const regex = /^[A-Za-z][A-Za-z0-9.]{1,9}$/;
+        const findDigitsRegex = /\d+[.]?\d*/g;
+
+        let digits = str.match(findDigitsRegex);
+
+        if (digits != null) {
+            for (let x = 0; x < digits.length; x++) {
+                if (x !== digits.length - 1) {
+                    digitsResult += digits[x] + ', ';
+                } else {
+                    digitsResult += digits[x];
+                }
+            }
+        }
+        console.log(`is "${str}" valid? - ${regex.test(str)}`)
+        console.log(`found digits: ${digitsResult}`);
+    }
+
+    let login1 = 'ee1.1ret3';
+    let login2 = 'ee1*1ret3';
+
+    isValidLogin(login1);
+    isValidLogin(login2);
+</script>
+</body>
+</html>

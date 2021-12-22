@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+<script>
+    function checkEmail(email) {
+        const regExp = /^[A-Za-z0-9_\-.]+[@][a-z]+[.][a-z]{3}$/;
+        return regExp.test(email);
+    }
+
+    console.log(checkEmail("Qmail2@gmail.com"))
+</script>
+</body>
+</html>

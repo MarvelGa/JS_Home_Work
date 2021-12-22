@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task6</title>
+</head>
+<body>
+<script>
+    function isEmailValid(str) {
+        const regex = /^[A-Za-z0-9][A-Za-z0-9_]*[\-]?[A-Za-z0-9_]*[@][a-z]+[.][a-z]{3}$/;
+        return regex.test(str);
+    }
+
+    let email1 = 'my_mail@gmail.com';
+    let email2 = '#my_mail@gmail.com';
+    let email3 = 'my_ma--il@gmail.com';
+    console.log(isEmailValid(email1).toString());
+    console.log(isEmailValid(email2).toString());
+    console.log(isEmailValid(email3).toString());
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+<script>
+    function upperCase(str) {
+        const regExp =/^[A-Z]/;
+    if (regExp.test(str)){
+        console.log(`The word ${str} has first latter is in UpperCase.`);
+        return;
+    }
+        console.log(`The word ${str} hasn't first latter is in UpperCase`);
+    }
+
+    upperCase('regexp');
+    upperCase('RegExp');
+</script>
+</body>
+</html>
