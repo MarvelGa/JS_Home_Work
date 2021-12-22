@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<p id="controls">
+    <input type="checkbox">checkbox 1
+    <input type="checkbox">checkbox 2
+    <input type="checkbox">checkbox 3
+    <input type="checkbox">checkbox 4
+    <input type="checkbox">checkbox 5
+    <input type="checkbox">checkbox 6
+</p>
+
+<script>
+    $('#controls input:checkbox').click(function () {
+        let counter = $('#controls input:checkbox:checked').length;
+        if (counter == 3) {
+            $('body input:checkbox').attr('disabled', true);
+        }
+    });
+</script>
+
+</body>
+</html>

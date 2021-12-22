@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h3>header1</h3>
+<div>text1</div>
+<h3>header2</h3>
+<div>text2</div>
+<script>
+    let allDiv = $("div");
+    let allH = $("h3");
+    allDiv.eq(0).attr("id", "div-1");
+    allH.eq(0).attr("id", "h-1");
+    $("#div-1").insertBefore("#h-1")
+    allDiv.eq(1).attr("id", "div-2");
+    allH.eq(1).attr("id", "h-2");
+    $("#div-2").insertBefore("#h-2")
+</script>
+</body>
+</html>
