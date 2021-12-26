@@ -1,0 +1,70 @@
+#title{
+    margin-top: 50px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+#message{
+    margin-top: 15px;
+    text-align: center;
+    color: crimson;
+}
+table{
+    margin-top: 5%;
+    margin-left: 40%;
+    border: 5px solid cadetblue;
+    border-collapse: collapse;
+    padding: 20px;
+}
+#myTab{
+    /*padding: 20px;*/
+    /*margin: 20px;*/
+
+    /*background-color: green;*/
+    /*font-size: 20px;*/
+    /*margin: 20px;*/
+    /*padding: 200px;*/
+    /*width: 500px;*/
+    /*height: 500px;*/
+}
+
+#tasksOfList{
+    text-align: center;
+}
+
+#showTasks>label{
+    display: flex;
+    /*margin-left: 100px;*/
+    /*line-height: 50px;*/
+}
+/*#my{*/
+/*    !*padding: 20px;*!*/
+/*    !*margin: 20px;*!*/
+
+/*    !*background-color: green;*!*/
+/*    !*font-size: 20px;*!*/
+/*    margin-right: 20px;*/
+/*    padding: 200px;*/
+/*    width: 500px;*/
+/*    height: 500px;*/
+/*}*/
+
+/*#lists{*/
+/*    background-color: green;*/
+/*        !*font-size: 20px;*!*/
+/*        !*margin: 20px;*!*/
+/*        padding: 20px;*/
+/*        width: 200px;*/
+/*}*/
+/*#container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+/*#container > div {*/
+/*    background-color: green;*/
+/*    font-size: 20px;*/
+/*    margin: 20px;*/
+/*    padding: 20px;*/
+/*    width: 200px;*/
+/*}*/

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOLIST</title>
+    <link href="todolist.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1 id="title">Your Multi To Do List</h1>
+
+<div id="myTab">
+    <h3 id="message"></h3>
+    <table>
+        <tr>
+
+            <td>
+                <div id="lists">
+                    <select id="listsSet">
+                    </select>
+                </div>
+
+            </td>
+            <form id="createListForm">
+                <td>
+
+                    <input type="text" id="newList" placeholder="Enter List Name"/>
+                </td>
+                <td>
+                    <input type="submit" id="crtBtn" value="Create New List"/>
+
+                </td>
+            </form>
+        </tr>
+    </table>
+</div>
+<!--        <tr>-->
+<!--            <td colspan="3">-->
+<div id="tasksOfList">
+    <h1 id="listTitle">Завдання</h1>
+    <form id="createTaskForm">
+        <input id="task" placeholder="Нове завдання" type="text">
+        <input id="taskSubmit" type="submit" value="Create New Task">
+    </form>
+</div>
+<table>
+    <tr>
+        <td>
+            <div id="showTasks">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button id="deleteCompletedTask">Delete Completed Task</button>
+        </td>
+        <td>
+            <button id="deleteAllList">Delete All List</button>
+        </td>
+    </tr>
+</table>
+
+
+<!--            </td>-->
+<!--        </tr>-->
+
+
+</body>
+
+<script>
+
+    // localStorage.clear();
+
+    let lists = JSON.parse(localStorage.getItem('setOfList')) || [];
+    let chosenListId = localStorage.getItem('chosenListId');
+    let listsElem = document.querySelector('#listsSet');
+    let message = document.querySelector('#message');
+    let tasks = document.querySelector('#showTasks');
+    let deleteTaskButton = document.querySelector('#deleteCompletedTask');
+    let deleteListButton = document.querySelector('#deleteAllList');
+
+    if (lists.length == 0) {
+        $('#tasksOfList').hide();
+    } else {
+        $('#tasksOfList').show();
+        chosenListId = lists[0].id;
+        localStorage.setItem('chosenListId', chosenListId);
+    }
+    show();
+    taskManipulation();
+    showTask();
+
+    message.innerHTML = "";
+    document.addEventListener('DOMContentLoaded', function () {
+        message.innerHTML = "";
+
+
+        const submitButtonTC = document.querySelector('#taskSubmit');
+        const submitButtonLC = document.querySelector('#crtBtn');
+        const newList = document.querySelector('#newList');
+        const newTask = document.querySelector('#task');
+
+        submitButtonLC.disabled = true;
+        submitButtonTC.disabled = true;
+        document.querySelector('#message').innerHTML = "";
+        newList.onkeyup = () => {
+            newList.value.length > 0 ? submitButtonLC.disabled = false : submitButtonLC.disabled = true;
+        }
+        newTask.onkeyup = () => {
+            newTask.value.length > 0 ? submitButtonTC.disabled = false : submitButtonTC.disabled = true;
+        }
+
+        document.querySelector('#createListForm').onsubmit = () => {
+            message.innerHTML = "";
+
+            const nameOfNewList = newList.value;
+            if (nameOfNewList === '' || nameOfNewList == null) {
+                return false;
+            }
+            if (lists.find(el => el.name === nameOfNewList)) {
+                message.innerHTML = `List with name "${nameOfNewList.toUpperCase()}" has already exist!`
+                newList.value = "";
+                return false;
+            }
+
+            let createdList = createList(nameOfNewList);
+
+            chosenListId = createdList.id;
+            localStorage.setItem('chosenListId', chosenListId);
+            lists.push(createdList);
+            localStorage.setItem('setOfList', JSON.stringify(lists));
+
+            newList.value = "";
+
+            cleanListSet();
+            show();
+            $("#tasksOfList").show();
+            taskManipulation();
+            submitButtonLC.disabled = true;
+            return false;
+        }
+
+
+        document.querySelector('#createTaskForm').onsubmit = () => {
+            newList.innerHTML = "";
+            message.innerHTML = "";
+            const nameOfNewTask = newTask.value;
+            let theList = lists.find(elem => elem.id === chosenListId);
+            if (nameOfNewTask === '' || nameOfNewTask == null) {
+                return false;
+            }
+            if (theList.tasks.find(el => el.name === nameOfNewTask)) {
+                message.innerHTML = `Task with name "${nameOfNewTask.toUpperCase()}" in "${theList.name.toUpperCase()}" List has already exist!`
+                newTask.value = "";
+                return false;
+            }
+            const task = createTask(nameOfNewTask);
+            newTask.value = "";
+            // let theList = lists.find(elem => elem.id === chosenListId);
+            theList.tasks.push(task);
+            localStorage.setItem('setOfList', JSON.stringify(lists));
+            showTask();
+            submitButtonTC.disabled = true;
+            return false;
+        }
+
+        listsElem.onchange = () => {
+            message.innerHTML = "";
+            newList.innerHTML = "";
+            $("#tasksOfList").show();
+            let index = $("#listsSet option:selected").index();
+            let chosenOption = listsElem.options[index]
+            chosenListId = chosenOption.id;
+
+            showTask();
+            taskManipulation();
+        }
+
+        tasks.addEventListener('click', elem => {
+            if (elem.target.tagName.toLowerCase() === 'input') {
+                let theList = lists.find(elem => elem.id === chosenListId);
+                let theTask = theList.tasks.find(task => task.id === elem.target.id);
+                theTask.complete = elem.target.checked;
+                localStorage.setItem('setOfList', JSON.stringify(lists));
+            }
+        })
+
+        deleteListButton.onclick = () => {
+            message.innerHTML = "";
+            newList.innerHTML = "";
+            let index = $("#listsSet option:selected").index();
+            let chosenOption = listsElem.options[index]
+            chosenListId = chosenOption.id;
+            // let selectedIndex = listsElem.options.selectedIndex;
+            // selectedListId = listsElem.options[selectedIndex].id;
+            let theList = lists.filter(list => list.id !== chosenListId);
+            lists = theList;
+            localStorage.setItem('setOfList', JSON.stringify(lists));
+
+            if (theList.length == 0) {
+                chosenListId = null;
+                localStorage.setItem('chosenListId', null);
+            } else if (theList.length == 1) {
+                chosenListId = lists[0].id;
+                localStorage.setItem('chosenListId', lists[0].id);
+            } else {
+                chosenListId = lists[0].id;
+                localStorage.setItem('chosenListId', lists[0].id);
+            }
+            // selectedListId=(theList.length==0?null:theList[0].id);
+
+
+            // cleanListSet();
+            if (lists.length == 0) {
+                $('#tasksOfList').hide();
+            }
+            taskManipulation();
+            show();
+        };
+        deleteTaskButton.onclick = () => {
+            let theList = lists.find(elem => elem.id === chosenListId);
+            theList.tasks = theList.tasks.filter(task => !task.complete);
+            localStorage.setItem('setOfList', JSON.stringify(lists));
+            showTask();
+        }
+        // cleanListSet();
+        // chosenListId=null;
+        message.innerHTML = "";
+
+    });
+
+    function taskManipulation() {
+
+        let theList = lists.find(elem => elem.id === chosenListId);
+        if (theList != null) {
+            $("#listTitle").text(`Tasks For "${theList.name.toUpperCase()}" List`);
+        }
+
+    }
+
+    function createList(name) {
+        return {id: Date.now().toString(), name: name, tasks: []}
+    }
+
+    function cleanListSet() {
+        $('#listsSet').find('option').remove().end();
+
+    }
+
+    function cleanTaskSet() {
+        $('#showTasks').find('label').remove().end();
+
+    }
+
+    function show() {
+        cleanListSet();
+        if (lists.length !== 0) {
+            for (let a in lists) {
+                const newOption = document.createElement('option');
+                newOption.innerHTML = lists[a].name;
+                newOption.setAttribute('id', lists[a].id);
+                if (lists[a].id == chosenListId) {
+                    newOption.selected = true;
+                }
+                listsElem.appendChild(newOption);
+            }
+        }
+
+        showTask();
+    }
+
+    function createTask(name) {
+        return {id: Date.now().toString(), name: name, complete: false}
+    }
+
+    function showTask() {
+        cleanTaskSet();
+        let theList = lists.find(elem => elem.id === chosenListId);
+        if (theList != null && theList.tasks.length !== 0) {
+            for (let a = 0; a < theList.tasks.length; a++) {
+                let checkboxElem = document.createElement('INPUT');
+                checkboxElem.type = 'checkbox';
+                checkboxElem.value = theList.tasks[a].name;
+                checkboxElem.id = theList.tasks[a].id;
+                checkboxElem.name = theList.tasks[a].name;
+                checkboxElem.checked = theList.tasks[a].complete;
+                let label = document.createElement('label');
+                label.htmlFor = theList.tasks[a].id;
+                label.append(checkboxElem);
+                label.append(document.createTextNode(`${theList.tasks[a].name}`));
+                tasks.appendChild(label);
+            }
+        }
+    }
+
+</script>
+</html>
