@@ -1,6 +1,6 @@
-let http = require("http");
+const http = require("http");
 const os = require('os');
-let path = require('path');
+const path = require('path');
 
 http.createServer((req, resp) => {
     resp.writeHead(200, {'Content-Type': 'text/html'});
