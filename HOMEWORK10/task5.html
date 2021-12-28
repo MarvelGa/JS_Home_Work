@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task5</title>
+</head>
+<body>
+<script>
+    function mapBuilder(keysArray, valuesArrays) {
+        const resultMap = new Map();
+        keysArray.forEach((key, i) => resultMap.set(key, valuesArrays[i]));
+        return resultMap;
+    }
+
+    let keys = [1, 2, 3, 4];
+    let values = ["div", "span", "b", "i"];
+    let map = mapBuilder(keys, values);
+    console.log(map.size); // 4
+    console.log(map.get(2)); // "span"
+</script>
+</body>
+</html>

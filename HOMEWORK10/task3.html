@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+<script>
+    function mul(...z) {
+        let result = 0;
+        let multi = 1;
+        z.forEach(item => {
+            if (typeof item === 'number') {
+                multi *= item;
+                result = multi;
+            }
+        });
+        return result;
+    }
+
+    console.log(mul(1, "str", 2, 3, true)); // 6
+    console.log(mul(null, "str", false, true)); // 0
+</script>
+</body>
+</html>
