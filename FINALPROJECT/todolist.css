@@ -1,99 +1,54 @@
-#title{
+#title {
     margin-top: 50px;
     text-align: center;
     color: cornflowerblue;
 }
 
-#message{
+#message {
     margin-top: 15px;
     text-align: center;
     color: crimson;
 }
+
 .frame {
-    /*float:left;*/
-    /*width: 50%*/
     flex: 50%;
 }
 
-/*table{*/
-/*    margin-top: 5%;*/
-/*    margin-left: 40%;*/
-/*    border: 5px solid cadetblue;*/
-/*    border-collapse: collapse;*/
-/*    padding: 20px;*/
-/*    !*float : left;*!*/
-/*    !*border-spacing: 10px;*!*/
-/*    border-collapse: separate;*/
-/*}*/
-
-#allElements{
+#allElements {
     background: beige;
     width: 700px;
+    height: max-content;
     position: relative;
     margin: auto;
     border-radius: 10px
 }
 
-#lists{
-    /*margin-top: 5%;*/
-    /*margin-left: 20%;*/
-    margin-left:100px;
-    margin-right:-100px;
+#lists {
+    margin-left: 100px;
+    margin-right: -100px;
 }
-#myTab{
+
+#myTab {
     display: flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-
-
-    /*padding: 20px;*/
-    /*margin: 20px;*/
-
-    /*background-color: green;*/
-    /*font-size: 20px;*/
-    /*margin: 20px;*/
-    /*padding: 200px;*/
-    /*width: 500px;*/
-    /*height: 500px;*/
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
-#tasksOfList{
+#tasksOfList {
     text-align: center;
 }
 
-#showTasks>label{
+
+#showTasks > label {
     display: flex;
-    /*margin-left: 100px;*/
-    /*line-height: 50px;*/
 }
-/*#my{*/
-/*    !*padding: 20px;*!*/
-/*    !*margin: 20px;*!*/
 
-/*    !*background-color: green;*!*/
-/*    !*font-size: 20px;*!*/
-/*    margin-right: 20px;*/
-/*    padding: 200px;*/
-/*    width: 500px;*/
-/*    height: 500px;*/
-/*}*/
+#showTasks {
+    margin-top: 20px;
+    margin-left: 198px;
+}
 
-/*#lists{*/
-/*    background-color: green;*/
-/*        !*font-size: 20px;*!*/
-/*        !*margin: 20px;*!*/
-/*        padding: 20px;*/
-/*        width: 200px;*/
-/*}*/
-/*#container {*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*}*/
-
-/*#container > div {*/
-/*    background-color: green;*/
-/*    font-size: 20px;*/
-/*    margin: 20px;*/
-/*    padding: 20px;*/
-/*    width: 200px;*/
-/*}*/
+.frame2 {
+    margin-top: 20px;
+    margin-left: 198px;
+}

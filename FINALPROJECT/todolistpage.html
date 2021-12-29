@@ -13,24 +13,20 @@
     <h3 id="message"></h3>
 
     <div id="myTab">
-
         <div id="lists" class="frame">
             <select id="listsSet">
             </select>
         </div>
 
         <div class="frame">
-
             <table>
                 <tr>
                     <form id="createListForm">
                         <td>
-
                             <input type="text" id="newList" placeholder="Enter List Name"/>
                         </td>
                         <td>
                             <input type="submit" id="crtBtn" value="Create New List"/>
-
                         </td>
                     </form>
                 </tr>
@@ -38,22 +34,19 @@
         </div>
     </div>
 
-    <!--        <tr>-->
-    <!--            <td colspan="3">-->
     <div id="tasksOfList">
-        <h1 id="listTitle">Завдання</h1>
+        <h2 id="listTitle">New Task</h2>
         <form id="createTaskForm">
-            <input id="task" placeholder="Нове завдання" type="text">
+            <input id="task" placeholder="Enter Task Name" type="text">
             <input id="taskSubmit" type="submit" value="Create New Task">
         </form>
     </div>
+
+    <div id="showTasks">
+    </div>
+
+    <div class ="frame2">
     <table>
-        <tr>
-            <td>
-                <div id="showTasks">
-                </div>
-            </td>
-        </tr>
         <tr>
             <td>
                 <button id="deleteCompletedTask">Delete Completed Task</button>
@@ -63,13 +56,9 @@
             </td>
         </tr>
     </table>
-
-
-    <!--            </td>-->
-    <!--        </tr>-->
-
+    </div>
 </div>
->
+
 
 
 <script>
