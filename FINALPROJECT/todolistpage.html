@@ -7,65 +7,70 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h1 id="title">Your Multi To Do List</h1>
+<div id="allElements">
+    <h1 id="title">Your Multi To Do List</h1>
 
-<div id="myTab">
     <h3 id="message"></h3>
+
+    <div id="myTab">
+
+        <div id="lists" class="frame">
+            <select id="listsSet">
+            </select>
+        </div>
+
+        <div class="frame">
+
+            <table>
+                <tr>
+                    <form id="createListForm">
+                        <td>
+
+                            <input type="text" id="newList" placeholder="Enter List Name"/>
+                        </td>
+                        <td>
+                            <input type="submit" id="crtBtn" value="Create New List"/>
+
+                        </td>
+                    </form>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!--        <tr>-->
+    <!--            <td colspan="3">-->
+    <div id="tasksOfList">
+        <h1 id="listTitle">Завдання</h1>
+        <form id="createTaskForm">
+            <input id="task" placeholder="Нове завдання" type="text">
+            <input id="taskSubmit" type="submit" value="Create New Task">
+        </form>
+    </div>
     <table>
         <tr>
-
             <td>
-                <div id="lists">
-                    <select id="listsSet">
-                    </select>
+                <div id="showTasks">
                 </div>
-
             </td>
-            <form id="createListForm">
-                <td>
-
-                    <input type="text" id="newList" placeholder="Enter List Name"/>
-                </td>
-                <td>
-                    <input type="submit" id="crtBtn" value="Create New List"/>
-
-                </td>
-            </form>
+        </tr>
+        <tr>
+            <td>
+                <button id="deleteCompletedTask">Delete Completed Task</button>
+            </td>
+            <td>
+                <button id="deleteAllList">Delete All List</button>
+            </td>
         </tr>
     </table>
+
+
+    <!--            </td>-->
+    <!--        </tr>-->
+
 </div>
-<!--        <tr>-->
-<!--            <td colspan="3">-->
-<div id="tasksOfList">
-    <h1 id="listTitle">Завдання</h1>
-    <form id="createTaskForm">
-        <input id="task" placeholder="Нове завдання" type="text">
-        <input id="taskSubmit" type="submit" value="Create New Task">
-    </form>
-</div>
-<table>
-    <tr>
-        <td>
-            <div id="showTasks">
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <button id="deleteCompletedTask">Delete Completed Task</button>
-        </td>
-        <td>
-            <button id="deleteAllList">Delete All List</button>
-        </td>
-    </tr>
-</table>
+>
 
-
-<!--            </td>-->
-<!--        </tr>-->
-
-
-</body>
 
 <script>
 
@@ -294,4 +299,5 @@
     }
 
 </script>
+</body>
 </html>

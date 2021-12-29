@@ -9,14 +9,43 @@
     text-align: center;
     color: crimson;
 }
-table{
-    margin-top: 5%;
-    margin-left: 40%;
-    border: 5px solid cadetblue;
-    border-collapse: collapse;
-    padding: 20px;
+.frame {
+    /*float:left;*/
+    /*width: 50%*/
+    flex: 50%;
+}
+
+/*table{*/
+/*    margin-top: 5%;*/
+/*    margin-left: 40%;*/
+/*    border: 5px solid cadetblue;*/
+/*    border-collapse: collapse;*/
+/*    padding: 20px;*/
+/*    !*float : left;*!*/
+/*    !*border-spacing: 10px;*!*/
+/*    border-collapse: separate;*/
+/*}*/
+
+#allElements{
+    background: beige;
+    width: 700px;
+    position: relative;
+    margin: auto;
+    border-radius: 10px
+}
+
+#lists{
+    /*margin-top: 5%;*/
+    /*margin-left: 20%;*/
+    margin-left:100px;
+    margin-right:-100px;
 }
 #myTab{
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+
+
     /*padding: 20px;*/
     /*margin: 20px;*/
 
