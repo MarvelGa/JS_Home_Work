@@ -60,3 +60,7 @@
 body{
     background: darkgrey;
 }
+
+input:checked+* {
+    text-decoration: line-through;
+}

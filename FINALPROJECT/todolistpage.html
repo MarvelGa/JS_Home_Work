@@ -63,9 +63,6 @@
 
 
 <script>
-
-    // localStorage.clear();
-
     let lists = JSON.parse(localStorage.getItem('setOfList')) || [];
     let chosenListId = localStorage.getItem('chosenListId');
     let listsElem = document.querySelector('#listsSet');
@@ -285,9 +282,11 @@
                 checkboxElem.name = theList.tasks[a].name;
                 checkboxElem.checked = theList.tasks[a].complete;
                 let label = document.createElement('label');
+                let span = document.createElement('span');
+                span.innerText=`${theList.tasks[a].name}`;
                 label.htmlFor = theList.tasks[a].id;
                 label.append(checkboxElem);
-                label.append(document.createTextNode(`${theList.tasks[a].name}`));
+                label.append(span);
                 tasks.appendChild(label);
             }
         }
