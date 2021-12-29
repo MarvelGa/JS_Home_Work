@@ -76,8 +76,10 @@
 
     if (lists.length == 0) {
         $('#tasksOfList').hide();
+        $('.frame2').hide();
     } else {
         $('#tasksOfList').show();
+        $('.frame2').show();
         chosenListId = lists[0].id;
         localStorage.setItem('chosenListId', chosenListId);
     }
@@ -130,6 +132,7 @@
             cleanListSet();
             show();
             $("#tasksOfList").show();
+            $('.frame2').show();
             taskManipulation();
             submitButtonLC.disabled = true;
             return false;
@@ -208,6 +211,8 @@
             // cleanListSet();
             if (lists.length == 0) {
                 $('#tasksOfList').hide();
+                $('.frame2').hide();
+
             }
             taskManipulation();
             show();
