@@ -1,7 +1,7 @@
 #title {
     margin-top: 50px;
     text-align: center;
-    color: cornflowerblue;
+    color: cadetblue;
 }
 
 #message {
@@ -20,7 +20,7 @@
     height: max-content;
     position: relative;
     margin: auto;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 #lists {
@@ -49,6 +49,14 @@
 }
 
 .frame2 {
-    margin-top: 20px;
+    margin-top: 40px;
     margin-left: 198px;
+}
+
+#listTitle{
+    color: cadetblue;
+}
+
+body{
+    background: darkgrey;
 }
