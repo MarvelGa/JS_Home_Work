@@ -88,7 +88,6 @@
     document.addEventListener('DOMContentLoaded', function () {
         message.innerHTML = "";
 
-
         const submitButtonTC = document.querySelector('#taskSubmit');
         const submitButtonLC = document.querySelector('#crtBtn');
         const newList = document.querySelector('#newList');
@@ -106,30 +105,19 @@
 
         document.querySelector('#createListForm').onsubmit = () => {
             message.innerHTML = "";
-
             const nameOfNewList = newList.value.trim();
-            // if (nameOfNewList === '' || nameOfNewList == null) {
-            //     return false;
-            // }
-            if (nameOfNewList == null) {
-                return false;
-            }
             if (lists.find(el => el.name === nameOfNewList)) {
                 message.innerHTML = `List with name "${nameOfNewList.toUpperCase()}" has already exist!`
                 newList.value = "";
                 submitButtonLC.disabled = true;
                 return false;
             }
-
             let createdList = createList(nameOfNewList);
-
             chosenListId = createdList.id;
             localStorage.setItem('chosenListId', chosenListId);
             lists.push(createdList);
             localStorage.setItem('setOfList', JSON.stringify(lists));
-
             newList.value = "";
-
             cleanListSet();
             show();
             $("#tasksOfList").show();
@@ -145,13 +133,6 @@
             message.innerHTML = "";
             const nameOfNewTask = newTask.value.trim();
             let theList = lists.find(elem => elem.id === chosenListId);
-            // if (nameOfNewTask.trim() === '' || nameOfNewTask == null) {
-            //     return false;
-            // }
-
-            if (nameOfNewTask == null) {
-                return false;
-            }
             if (theList.tasks.find(el => el.name === nameOfNewTask)) {
                 message.innerHTML = `Task with name "${nameOfNewTask.toUpperCase()}" in "${theList.name.toUpperCase()}" List has already exist!`
                 newTask.value = "";
@@ -160,7 +141,6 @@
             }
             const task = createTask(nameOfNewTask);
             newTask.value = "";
-            // let theList = lists.find(elem => elem.id === chosenListId);
             theList.tasks.push(task);
             localStorage.setItem('setOfList', JSON.stringify(lists));
             showTask();
@@ -175,7 +155,6 @@
             let index = $("#listsSet option:selected").index();
             let chosenOption = listsElem.options[index]
             chosenListId = chosenOption.id;
-
             showTask();
             taskManipulation();
         }
@@ -195,8 +174,6 @@
             let index = $("#listsSet option:selected").index();
             let chosenOption = listsElem.options[index]
             chosenListId = chosenOption.id;
-            // let selectedIndex = listsElem.options.selectedIndex;
-            // selectedListId = listsElem.options[selectedIndex].id;
             let theList = lists.filter(list => list.id !== chosenListId);
             lists = theList;
             localStorage.setItem('setOfList', JSON.stringify(lists));
@@ -211,10 +188,7 @@
                 chosenListId = lists[0].id;
                 localStorage.setItem('chosenListId', lists[0].id);
             }
-            // selectedListId=(theList.length==0?null:theList[0].id);
 
-
-            // cleanListSet();
             if (lists.length == 0) {
                 $('#tasksOfList').hide();
                 $('.frame2').hide();
@@ -229,10 +203,7 @@
             localStorage.setItem('setOfList', JSON.stringify(lists));
             showTask();
         }
-        // cleanListSet();
-        // chosenListId=null;
         message.innerHTML = "";
-
     });
 
     function taskManipulation() {
