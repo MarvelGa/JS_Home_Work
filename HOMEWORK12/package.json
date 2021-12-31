@@ -1,0 +1,14 @@
+{
+  "name": "homework12",
+  "version": "1.0.0",
+  "description": "homework 12",
+  "main": "task1and2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tesliuk Halyna",
+  "license": "ISC",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1 And Task2</title>
+</head>
+<body>
+<button id='vote'>Vote!</button>
+</br></br>
+<button id='books'>Download books</button>
+<ul id='bookList'></ul>
+<script>
+    document.getElementById('vote').onclick = () => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "");
+        xhttp.onload = () => {
+            return document.getElementById("vote").innerHTML = "Your vote is accepted: " + new Date();
+        };
+        xhttp.send();
+    }
+
+    document.getElementById('books').onclick = () => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "books.json");
+        xhttp.onload = function () {
+            let data = this.responseText;
+            document.getElementById('books').outerHTML = ''
+            createList(data);
+        }
+        xhttp.send();
+    }
+
+    function createList(data) {
+        let dataFromFile = JSON.parse(data);
+        let ulElem = document.createElement('ul');
+        for (const item of dataFromFile) {
+            let liElem = document.createElement('li');
+            liElem.appendChild(document.createTextNode(item.name))
+            ulElem.appendChild(liElem);
+            document.body.appendChild(ulElem);
+        }
+    }
+</script>
+</body>
+</html>
