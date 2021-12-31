@@ -107,7 +107,7 @@
         document.querySelector('#createListForm').onsubmit = () => {
             message.innerHTML = "";
 
-            const nameOfNewList = newList.value;
+            const nameOfNewList = newList.value.trim();
             // if (nameOfNewList === '' || nameOfNewList == null) {
             //     return false;
             // }
@@ -117,6 +117,7 @@
             if (lists.find(el => el.name === nameOfNewList)) {
                 message.innerHTML = `List with name "${nameOfNewList.toUpperCase()}" has already exist!`
                 newList.value = "";
+                submitButtonLC.disabled = true;
                 return false;
             }
 
@@ -142,7 +143,7 @@
         document.querySelector('#createTaskForm').onsubmit = () => {
             newList.innerHTML = "";
             message.innerHTML = "";
-            const nameOfNewTask = newTask.value;
+            const nameOfNewTask = newTask.value.trim();
             let theList = lists.find(elem => elem.id === chosenListId);
             // if (nameOfNewTask.trim() === '' || nameOfNewTask == null) {
             //     return false;
@@ -154,6 +155,7 @@
             if (theList.tasks.find(el => el.name === nameOfNewTask)) {
                 message.innerHTML = `Task with name "${nameOfNewTask.toUpperCase()}" in "${theList.name.toUpperCase()}" List has already exist!`
                 newTask.value = "";
+                submitButtonTC.disabled = true;
                 return false;
             }
             const task = createTask(nameOfNewTask);
