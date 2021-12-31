@@ -98,17 +98,20 @@
         submitButtonTC.disabled = true;
         document.querySelector('#message').innerHTML = "";
         newList.onkeyup = () => {
-            newList.value.length > 0 ? submitButtonLC.disabled = false : submitButtonLC.disabled = true;
+            newList.value.trim().length > 0 ? submitButtonLC.disabled = false : submitButtonLC.disabled = true;
         }
         newTask.onkeyup = () => {
-            newTask.value.length > 0 ? submitButtonTC.disabled = false : submitButtonTC.disabled = true;
+            newTask.value.trim().length > 0 ? submitButtonTC.disabled = false : submitButtonTC.disabled = true;
         }
 
         document.querySelector('#createListForm').onsubmit = () => {
             message.innerHTML = "";
 
             const nameOfNewList = newList.value;
-            if (nameOfNewList === '' || nameOfNewList == null) {
+            // if (nameOfNewList === '' || nameOfNewList == null) {
+            //     return false;
+            // }
+            if (nameOfNewList == null) {
                 return false;
             }
             if (lists.find(el => el.name === nameOfNewList)) {
@@ -141,7 +144,11 @@
             message.innerHTML = "";
             const nameOfNewTask = newTask.value;
             let theList = lists.find(elem => elem.id === chosenListId);
-            if (nameOfNewTask === '' || nameOfNewTask == null) {
+            // if (nameOfNewTask.trim() === '' || nameOfNewTask == null) {
+            //     return false;
+            // }
+
+            if (nameOfNewTask == null) {
                 return false;
             }
             if (theList.tasks.find(el => el.name === nameOfNewTask)) {
