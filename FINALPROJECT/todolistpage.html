@@ -45,22 +45,20 @@
     <div id="showTasks">
     </div>
 
-    <div class ="frame2">
-    <table>
-        <tr>
-            <td>
-                <button id="deleteCompletedTask">Delete Completed Task</button>
-            </td>
-            <td>
-                <button id="deleteAllList">Delete All List</button>
-            </td>
-        </tr>
-    </table>
+    <div class="frame2">
+        <table>
+            <tr>
+                <td>
+                    <button id="deleteCompletedTask">Delete Completed Task</button>
+                </td>
+                <td>
+                    <button id="deleteAllList">Delete All List</button>
+                </td>
+            </tr>
+        </table>
     </div>
     </br></br></br>
 </div>
-
-
 
 <script>
     let lists = JSON.parse(localStorage.getItem('setOfList')) || [];
@@ -71,7 +69,7 @@
     let deleteTaskButton = document.querySelector('#deleteCompletedTask');
     let deleteListButton = document.querySelector('#deleteAllList');
 
-    if (lists.length == 0) {
+    if (lists.length === 0) {
         $('#tasksOfList').hide();
         $('.frame2').hide();
     } else {
@@ -80,8 +78,8 @@
         chosenListId = lists[0].id;
         localStorage.setItem('chosenListId', chosenListId);
     }
-    show();
-    taskManipulation();
+    showList();
+    taskMessageManipulation();
     showTask();
 
     message.innerHTML = "";
@@ -112,21 +110,20 @@
                 submitButtonLC.disabled = true;
                 return false;
             }
-            let createdList = createList(nameOfNewList);
+            const createdList = {id: Date.now().toString(), name: nameOfNewList, tasks: []};
             chosenListId = createdList.id;
             localStorage.setItem('chosenListId', chosenListId);
             lists.push(createdList);
             localStorage.setItem('setOfList', JSON.stringify(lists));
             newList.value = "";
             cleanListSet();
-            show();
+            showList();
             $("#tasksOfList").show();
             $('.frame2').show();
-            taskManipulation();
+            taskMessageManipulation();
             submitButtonLC.disabled = true;
             return false;
         }
-
 
         document.querySelector('#createTaskForm').onsubmit = () => {
             newList.innerHTML = "";
@@ -139,7 +136,7 @@
                 submitButtonTC.disabled = true;
                 return false;
             }
-            const task = createTask(nameOfNewTask);
+            const task = {id: Date.now().toString(), name: nameOfNewTask, complete: false};
             newTask.value = "";
             theList.tasks.push(task);
             localStorage.setItem('setOfList', JSON.stringify(lists));
@@ -153,10 +150,10 @@
             newList.innerHTML = "";
             $("#tasksOfList").show();
             let index = $("#listsSet option:selected").index();
-            let chosenOption = listsElem.options[index]
+            let chosenOption = listsElem.options[index];
             chosenListId = chosenOption.id;
             showTask();
-            taskManipulation();
+            taskMessageManipulation();
         }
 
         tasks.addEventListener('click', elem => {
@@ -172,16 +169,16 @@
             message.innerHTML = "";
             newList.innerHTML = "";
             let index = $("#listsSet option:selected").index();
-            let chosenOption = listsElem.options[index]
+            let chosenOption = listsElem.options[index];
             chosenListId = chosenOption.id;
             let theList = lists.filter(list => list.id !== chosenListId);
             lists = theList;
             localStorage.setItem('setOfList', JSON.stringify(lists));
 
-            if (theList.length == 0) {
+            if (theList.length === 0) {
                 chosenListId = null;
                 localStorage.setItem('chosenListId', null);
-            } else if (theList.length == 1) {
+            } else if (theList.length === 1) {
                 chosenListId = lists[0].id;
                 localStorage.setItem('chosenListId', lists[0].id);
             } else {
@@ -189,14 +186,15 @@
                 localStorage.setItem('chosenListId', lists[0].id);
             }
 
-            if (lists.length == 0) {
+            if (lists.length === 0) {
                 $('#tasksOfList').hide();
                 $('.frame2').hide();
 
             }
-            taskManipulation();
-            show();
+            taskMessageManipulation();
+            showList();
         };
+
         deleteTaskButton.onclick = () => {
             let theList = lists.find(elem => elem.id === chosenListId);
             theList.tasks = theList.tasks.filter(task => !task.complete);
@@ -206,17 +204,11 @@
         message.innerHTML = "";
     });
 
-    function taskManipulation() {
-
+    function taskMessageManipulation() {
         let theList = lists.find(elem => elem.id === chosenListId);
         if (theList != null) {
             $("#listTitle").text(`Tasks For "${theList.name.toUpperCase()}" List`);
         }
-
-    }
-
-    function createList(name) {
-        return {id: Date.now().toString(), name: name, tasks: []}
     }
 
     function cleanListSet() {
@@ -229,14 +221,14 @@
 
     }
 
-    function show() {
+    function showList() {
         cleanListSet();
         if (lists.length !== 0) {
             for (let a in lists) {
                 const newOption = document.createElement('option');
                 newOption.innerHTML = lists[a].name;
                 newOption.setAttribute('id', lists[a].id);
-                if (lists[a].id == chosenListId) {
+                if (lists[a].id === chosenListId) {
                     newOption.selected = true;
                 }
                 listsElem.appendChild(newOption);
@@ -244,10 +236,6 @@
         }
 
         showTask();
-    }
-
-    function createTask(name) {
-        return {id: Date.now().toString(), name: name, complete: false}
     }
 
     function showTask() {
@@ -263,7 +251,7 @@
                 checkboxElem.checked = theList.tasks[a].complete;
                 let label = document.createElement('label');
                 let span = document.createElement('span');
-                span.innerText=`${theList.tasks[a].name}`;
+                span.innerText = `${theList.tasks[a].name}`;
                 label.htmlFor = theList.tasks[a].id;
                 label.append(checkboxElem);
                 label.append(span);
@@ -271,7 +259,6 @@
             }
         }
     }
-
 </script>
 </body>
 </html>
