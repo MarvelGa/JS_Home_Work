@@ -156,14 +156,14 @@
             taskMessageManipulation();
         }
 
-        tasks.addEventListener('click', elem => {
+        tasks.onclick = ((elem) => {
             if (elem.target.tagName.toLowerCase() === 'input') {
                 let theList = lists.find(elem => elem.id === chosenListId);
                 let theTask = theList.tasks.find(task => task.id === elem.target.id);
                 theTask.complete = elem.target.checked;
                 localStorage.setItem('setOfList', JSON.stringify(lists));
             }
-        })
+        });
 
         deleteListButton.onclick = () => {
             message.innerHTML = "";
